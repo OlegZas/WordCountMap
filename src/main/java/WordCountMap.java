@@ -14,8 +14,22 @@ public class WordCountMap {
      * @param words A string of Words separated by spaces.
      * @return a Map (key/value pairs) of all the words mapped to their number of occurrences.
      */
-    public Map<String, Integer> returnWordMap(String words){
+     public Map<String, Integer> returnWordMap(String words) {
+        Map<String, Integer> wordMap = new HashMap<>();
 
-        return null;
+        String[] wordArray = words.split(" "); // Split the words into an array based on spaces
+
+        for (String word : wordArray) {
+            if (wordMap.containsKey(word)) {
+                // If the word already exists in the map, increment its count value
+                int count = wordMap.get(word);
+                wordMap.put(word, count + 1);
+            } else {
+                // If the word is encountered for the first time, add it to the map with count 1
+                wordMap.put(word, 1);
+            }
+        }
+
+        return wordMap;
     }
 }
